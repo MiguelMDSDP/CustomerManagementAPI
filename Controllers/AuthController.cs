@@ -3,8 +3,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using CustomerManagementAPI.Models;
 
 namespace CustomerManagementAPI.Controllers
@@ -49,6 +47,7 @@ namespace CustomerManagementAPI.Controllers
 
         return Ok(new
         {
+          username = model.Username,
           token = new JwtSecurityTokenHandler().WriteToken(token)
         });
       }
