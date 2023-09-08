@@ -1,0 +1,38 @@
+# Build output and dependency directories
+bin/
+obj/
+
+# .NET build files
+*.dll
+*.exe
+*.pdb
+*.log
+*.config
+*.nupkg
+
+# Publish output directory
+publish/
+
+# Temporary files
+**/*.swp
+
+# Visual Studio Code
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# Dependency files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# NuGet packages directory
+packages/
+
+# .NET CLI cache directory
+.nuget/
+
+# Rider build and output files
+bin/
+out/
