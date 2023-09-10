@@ -26,7 +26,7 @@ namespace CustomerManagementAPI.Controllers
         return BadRequest("Request malformed.");
       }
 
-      if (model.Username == "admin" && model.Password == "admin")
+      if ((model.Username == "admin" && model.Password == "admin") || (model.Username == "sales" && model.Username == "sales"))
       {
         var claims = new[]
         {
@@ -48,6 +48,7 @@ namespace CustomerManagementAPI.Controllers
         return Ok(new
         {
           username = model.Username,
+          role = model.Username == "admin" ? "MANAGER" : "SALES",
           token = new JwtSecurityTokenHandler().WriteToken(token)
         });
       }
