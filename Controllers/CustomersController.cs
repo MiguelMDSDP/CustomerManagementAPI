@@ -7,7 +7,7 @@ namespace CustomerManagementAPI.Controllers
   [Route("api/customers")]
   public class CustomerController : ControllerBase
   {
-    private readonly List<Customer> _customers = new List<Customer>
+    private readonly List<Customer> _customers = new()
     {
       new() { Id = 1, FirstName = "John", LastName = "Doe", Email = "john@example.com", IsActive = true },
       new() { Id = 2, FirstName = "Jane", LastName = "Smith", Email = "jane@example.com", IsActive = true },
@@ -55,7 +55,7 @@ namespace CustomerManagementAPI.Controllers
     [HttpPut("{id}")]
     public IActionResult UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
     {
-      if (updatedCustomer == null || id != updatedCustomer.Id)
+      if (updatedCustomer == null)
       {
         return BadRequest("Invalid customer data.");
       }
