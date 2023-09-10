@@ -1,6 +1,6 @@
 # Customer Management API
 
-Welcome to the Customer Management API! This API serves as the backend component of our customer management system, providing essential functionality for user authentication and customer data management.
+Welcome to the Customer Management API! This API serves as the backend component of a customer management system, providing essential functionality for user authentication and customer data management.
 
 ## Table of Contents
 
@@ -11,6 +11,8 @@ Welcome to the Customer Management API! This API serves as the backend component
     - [Installation](#installation)
   - [API Documentation](#api-documentation)
     - [Accessing Swagger Documentation](#accessing-swagger-documentation)
+  - [MySQL](#mysql)
+  - [Why MySQL?](#why-mysql)
   - [Architecture Pattern: MVC and SOLID Principles](#architecture-pattern-mvc-and-solid-principles)
     - [MVC (Model-View-Controller)](#mvc-model-view-controller)
     - [Relationship with SOLID Principles](#relationship-with-solid-principles)
@@ -20,6 +22,7 @@ Welcome to the Customer Management API! This API serves as the backend component
       - [Semantic Commits](#semantic-commits)
       - [Advantages of Gitmoji](#advantages-of-gitmoji)
   - [License](#license)
+  - [Next Steps](#next-steps)
 
 ## Getting Started
 
@@ -29,14 +32,15 @@ To get started with the Customer Management API, follow these steps:
 
 Before you begin, ensure that you have the following prerequisites installed on your system:
 
-- .[.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+- [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
+- [Docker](https://docs.docker.com/engine/install/)
 
 ### Installation
 
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/customer-management-api.git
+   git clone https://github.com/MiguelMDSDP/customer-management-api.git
    ```
 
 2. Navigate to the project's root directory:
@@ -45,13 +49,31 @@ Before you begin, ensure that you have the following prerequisites installed on 
    cd CustomerManagementAPI
    ```
 
-3. Build the project:
+3. Run the docker-compose file
+
+   ```sh
+   docker-compose up -d
+   ```
+
+4. Create the migrations
+
+   ```sh
+   dotnet ef migrations add InitialMigration
+   ```
+
+5. Update the database
+
+   ```sh
+   dotnet ef database update
+   ```
+
+6. Build the project:
 
    ```sh
    dotnet build
    ```
 
-4. Run the application:
+7. Run the application:
 
    ```sh
    dotnet run
@@ -63,15 +85,15 @@ For more detailed instructions on configuring and using the API, refer to the AP
 
 ## API Documentation
 
-We have implemented comprehensive API documentation for the Customer Management API using Swagger. Swagger provides a user-friendly interface for exploring and testing API endpoints. Here's why we chose to use Swagger and how it benefits us:
+A comprehensive API documentation is implemented for the Customer Management API using Swagger. Swagger provides a user-friendly interface for exploring and testing API endpoints. Here's why Swagger was chosen and how it benefits the project:
 
-- **Interactive Documentation:** Swagger generates interactive documentation for our API, making it easy for developers to understand the available endpoints, request parameters, and response structures.
+- **Interactive Documentation:** Swagger generates interactive documentation for the API, making it easy for developers to understand the available endpoints, request parameters, and response structures.
 
 - **Testing and Debugging:** With Swagger, you can test API endpoints directly from the documentation interface. It's an excellent tool for debugging and ensuring that your API functions as expected.
 
-- **Simplified Integration:** Swagger simplifies the integration of our API with client applications. Developers can refer to the documentation for accurate endpoint descriptions, reducing integration complexity.
+- **Simplified Integration:** Swagger simplifies the integration of the API with client applications. Developers can refer to the documentation for accurate endpoint descriptions, reducing integration complexity.
 
-- **Consistency:** By using Swagger, we ensure that the API documentation remains up to date and consistent with the actual API implementation. This helps maintain a high level of accuracy.
+- **Consistency:** By using Swagger, the API documentation remains up to date and consistent with the actual API implementation. This helps maintain a high level of accuracy.
 
 ### Accessing Swagger Documentation
 
@@ -83,13 +105,37 @@ To access the Swagger documentation for the Customer Management API, follow thes
 
 3. You will be presented with the Swagger documentation interface, where you can explore and test the API's endpoints.
 
-Feel free to use Swagger for testing and understanding the API's capabilities. If you have any questions or encounter any issues, refer to the documentation or reach out to our team for assistance.
+Feel free to use Swagger for testing and understanding the API's capabilities. If you have any questions or encounter any issues, refer to the documentation or reach out to the team for assistance.
+
+## MySQL
+
+## Why MySQL?
+
+In the development of the application, the choice of the right database management system (DBMS) is a critical decision. MySQL was selected as the preferred DBMS for several compelling reasons:
+
+1. **Open-Source:** MySQL is an open-source relational database management system, meaning it's freely available and can be used without incurring licensing costs. This aligns with the projetc's goal to keep the project cost-effective.
+
+2. **Community Support:** MySQL boasts a vast and active user community. This extensive community support ensures the access to a wealth of resources, forums, and documentation to help troubleshoot issues, optimize performance, and find solutions quickly.
+
+3. **Scalability:** MySQL is renowned for its scalability. As the application grows, a database that can handle increasing data volumes and traffic is needed. MySQL's ability to scale horizontally and vertically makes it a suitable choice for future expansion.
+
+4. **Performance:** MySQL is known for its fast read and write operations, making it an excellent choice for applications that require quick data retrieval and storage. Its performance optimizations ensure responsive data access.
+
+5. **Reliability:** MySQL is a proven and reliable DBMS that has been used successfully in numerous mission-critical applications across industries. Its robustness and data integrity features align with the commitment to delivering a dependable application.
+
+6. **Compatibility:** MySQL is compatible with a wide range of programming languages, making it versatile for integration with various technologies, including the choice of the .NET ecosystem for the backend and ReactJS for the frontend.
+
+7. **Security:** MySQL offers robust security features, including user authentication, role-based access control, encryption, and auditing capabilities. This helps us ensure the confidentiality and integrity of the users' data.
+
+8. **Maturity:** MySQL has a long history and has been refined over the years. This maturity ensures stability and minimizes the risk of encountering unexpected issues or limitations.
+
+In conclusion, MySQL was selected as the database system for the project due to its open-source nature, strong community support, scalability, performance, reliability, compatibility, security features, and proven track record. These factors collectively contribute to a solid foundation for the application's data storage and management needs.
 
 ## Architecture Pattern: MVC and SOLID Principles
 
 ### MVC (Model-View-Controller)
 
-Our Customer Management API follows the Model-View-Controller (MVC) architectural pattern to organize the structure of the application. This pattern divides the application into three main components:
+The Customer Management API follows the Model-View-Controller (MVC) architectural pattern to organize the structure of the application. This pattern divides the application into three main components:
 
 - **Model:** Represents data and business logic. It manages the state of the application and responds to queries about this data.
 
@@ -105,11 +151,11 @@ The use of the MVC pattern aligns with the principles of SOLID, particularly the
 
 - **Interface Segregation Principle (ISP):** MVC also supports the idea of separating the interfaces of each component. Each component has a clear and defined interface for communicating with the others, making it easy to modify or replace one component without affecting the others.
 
-By following the MVC pattern in our ASP.NET Core project, we enhance code organization, maintainability, and extensibility, aligning with SOLID software design principles.
+By following the MVC pattern in the ASP.NET Core project, the code organization, maintainability, and extensibility are enhanced, aligning with SOLID software design principles.
 
 ## Gitmoji Commit Convention
 
-We use the Gitmoji commit convention to provide a visual representation of the purpose and content of each commit. This convention helps us understand changes at a glance and maintain a clean commit history.
+The Gitmoji commit convention is used to provide a visual representation of the purpose and content of each commit. This convention helps us understand changes at a glance and maintain a clean commit history.
 
 - :sparkles: `:sparkles:: Introducing new features
 - :bug: `:bug:: Fixing a bug
@@ -158,3 +204,21 @@ In summary, while both Gitmoji and Semantic Commits serve the purpose of providi
 ## License
 
 This project is licensed under the MIT License.
+
+## Next Steps
+
+To continue improving the API, here are the next steps to take:
+
+1. **Authentication Model in Database Context:** Add the authentication model to the database context to enable secure storage of user information and authentication-related data.
+
+2. **Database Context Setup:** Ensure correct instantiation and management of the database context throughout the application. Implement a robust database context initialization strategy using Entity Framework Core, ensuring efficient data access.
+
+3. **Controller Refactoring:** Refactor authentication and customer management controllers to use the database context for proper data persistence. Utilize Entity Framework Core's ORM capabilities for seamless data interactions.
+
+4. **Role and Access Management:** Add role and access management capabilities to the API using a role-based access control (RBAC) system. Libraries like `AspNetCore.Identity` provide features for managing roles and permissions.
+
+5. **Unit Testing:** Implement unit tests for the application's critical components and controllers using testing frameworks like `xUnit` or `NUnit`. Automated tests help ensure the reliability and functionality of the API.
+
+6. **CI/CD Pipeline:** Establish a Continuous Integration and Continuous Deployment (CI/CD) pipeline using CI/CD services such as `GitHub Actions`, `Azure DevOps`, or `Travis CI`. Automate the deployment process for efficient and reliable releases.
+
+These steps, along with their suggested solutions, represent the ongoing commitment to building a robust and feature-rich API.
