@@ -29,8 +29,6 @@ public class Startup
     services.AddSwaggerGen(c =>
     {
       c.SwaggerDoc("v1", new OpenApiInfo { Title = "Customer Management API", Version = "v1" });
-
-      // Configuração do JWT para autenticação no Swagger
       c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
       {
         Description = "Input the token in the format 'Bearer <token>'.",
@@ -41,17 +39,17 @@ public class Startup
       });
       c.AddSecurityRequirement(new OpenApiSecurityRequirement
         {
+          {
+            new OpenApiSecurityScheme
             {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                },
-                new string[] { }
-            }
+              Reference = new OpenApiReference
+              {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+              }
+            },
+            new string[] { }
+          }
         });
     });
   }
