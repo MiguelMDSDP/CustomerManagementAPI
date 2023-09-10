@@ -36,3 +36,6 @@ packages/
 # Rider build and output files
 bin/
 out/
+
+# Migrations
+Migrations
