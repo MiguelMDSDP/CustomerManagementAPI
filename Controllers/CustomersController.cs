@@ -7,19 +7,7 @@ namespace CustomerManagementAPI.Controllers
   [Route("api/customers")]
   public class CustomerController : ControllerBase
   {
-    private readonly List<Customer> _customers = new()
-    {
-      new() { Id = 1, FirstName = "John", LastName = "Doe", Email = "john@example.com", IsActive = true },
-      new() { Id = 2, FirstName = "Jane", LastName = "Smith", Email = "jane@example.com", IsActive = true },
-      new() { Id = 3, FirstName = "Michael", LastName = "Johnson", Email = "michael@example.com", IsActive = true },
-      new() { Id = 4, FirstName = "Emily", LastName = "Brown", Email = "emily@example.com", IsActive = true },
-      new() { Id = 5, FirstName = "William", LastName = "Taylor", Email = "william@example.com", IsActive = true },
-      new() { Id = 6, FirstName = "Olivia", LastName = "Davis", Email = "olivia@example.com", IsActive = true },
-      new() { Id = 7, FirstName = "James", LastName = "Wilson", Email = "james@example.com", IsActive = true },
-      new() { Id = 8, FirstName = "Emma", LastName = "Anderson", Email = "emma@example.com", IsActive = true },
-      new() { Id = 9, FirstName = "Benjamin", LastName = "Moore", Email = "benjamin@example.com", IsActive = true },
-      new() { Id = 10, FirstName = "Ava", LastName = "Lee", Email = "ava@example.com", IsActive = true }
-    };
+    private static readonly List<Customer> _customers = new();
 
     [HttpGet]
     public IActionResult GetCustomers()
